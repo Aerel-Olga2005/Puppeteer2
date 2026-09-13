@@ -1,0 +1,17 @@
+{
+  "name": "puppeteer2",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Olga Usacheva",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "jest": "^30.5.1",
+    "jest-puppeteer": "^11.0.0",
+    "puppeteer": "^25.10.0"
+  }
+}

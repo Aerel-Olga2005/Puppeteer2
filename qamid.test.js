@@ -19,12 +19,13 @@ describe("Go to the cinema tests", () => {
         const expected = "ЗалЗал90";
         await clickElement(page, 'a.page-nav__day.page-nav__day_weekend');
         await clickElement(page, '.movie-seances__time[attr="value"]');
+        await clickElement(page, '.acceptin-button');
         const actual = await page.$eval(
             "[.buying__info-hall]",
             link => link.textContent,
 
         );
-        expect(actual).toConain(expected);
+        expect(actual).toContain(expected);
     });
 
     test("Booking", async () => {
@@ -39,6 +40,7 @@ describe("Go to the cinema tests", () => {
         await clickElement(page, 'div:nth-child(7) span:nth-child(6)');
         await clickElement(page, 'div:nth-child(7) span:nth-child(7)');
         await clickElement(page, 'div:nth-child(7) span:nth-child(8)');
+        await clickElement(page, '.acceptin-button');
         const actualFilm = await page.$eval(
             "[.ticket__details.ticket__title]",
             link => link.textContent,
@@ -77,11 +79,12 @@ describe("Go to the cinema tests", () => {
         expect(actualCost).toContain(expectCost);
     });
 
-    test("Past time session", async () => {
-        const expected = "Selector is not clicable: 13:00";
-        await clickElement(page, 'a:has-text("Today")');
-        await clickElement(page, 'body > main:nth-child(3) > section:nth-child(1) > div:nth-child(2) > ul:nth-child(2) > li:nth-child(1)');
-        await expect(page.click('body > main:nth-child(3) > section:nth-child(1) > div:nth-child(2) > ul:nth-child(2) > li:nth-child(1)')).toThrow(expected);
+    test("Reserved plases", async () => {
+        const expected = "Selector is not clicable: Занято";
+        await clickElement(page, 'body nav.page-nav a:nth-child(7)');
+        await clickElement(page, '.movie-seances__time[data-seance-id="217"]');
+        await clickElement(page, 'div:nth-child(7) span:nth-child(8)');
+        await expect(page.click('.buying-scheme__chair.buying-scheme__chair_taken')).toThrow(expected);
     });
 });
 

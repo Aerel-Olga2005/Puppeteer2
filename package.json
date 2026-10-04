@@ -7,11 +7,16 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "cucumber": "cucumber-js",
+    "cucumber2": "cucumber-js --tags=@only"
   },
   "dependencies": {
+    "chai": "^6.3.0",
+    "cucumber": "^6.0.7",
     "jest": "^30.5.1",
     "jest-puppeteer": "^11.0.0",
+    "npm": "^12.2.0",
     "puppeteer": "^25.10.0"
   }
 }

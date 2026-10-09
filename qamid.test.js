@@ -34,7 +34,7 @@ describe("Go to the cinema tests", () => {
         
         const expectPlace = "7/6, 7/7, 7/8";
         const expectHall = "зал 5";
-        const expectDate = "14-10-2026";
+        const expectDate = "15-10-2026";
         const expectSession = "20:00";
         const expectCost = "750";
         
@@ -58,20 +58,19 @@ describe("Go to the cinema tests", () => {
 
    
    test("Reserved plases", async () => {
-    await clickElement(page, 'div:nth-child(11) span:nth-child(1)');
-    await clickElement(page, '.acceptin-button');
-    await clickElement(page, '.acceptin-button');
+    await clickElement(page, '.buying-scheme__chair_taken');
+    const actual = await page.$eval(".acceptin-button", (link) => link.getAttribute("disabled"));
+    expect(actual).toEqual("true");
+    //await clickElement(page, '.acceptin-button');
+    //await clickElement(page, '.acceptin-button');
 
-    try {
-        await page.goBack();
-        await clickElement(page, 'a:nth-child(7)');
-        await page.waitForSelector('.movie-seances__time[data-seance-id="239"]');
-        await clickElement(page, '.movie-seances__time[data-seance-id="239"]');
-        await clickElement(page, 'div:nth-child(11) span:nth-child(1)');
-    } catch (error) {
-        throw new Error(`Selector is not clickable: ${selector}`);
-    }
-
-              
-    }, 60000);
+   // try {
+    //    await page.goBack();
+    //    await clickElement(page, 'a:nth-child(7)');
+    //    await page.waitForSelector('.movie-seances__time[data-seance-id="239"]');
+    //    await clickElement(page, '.movie-seances__time[data-seance-id="239"]');
+    //    await clickElement(page, 'div:nth-child(11) span:nth-child(1)');
+    //} catch (error) {
+     //   throw new Error(`Selector is not clickable: ${selector}`);
+    });
 });

@@ -91,13 +91,15 @@ Then('user sees cost {string}', async function (string) {
 });
          
 When('user click by place', async function () {
-    return await clickElement(this.page, "div:nth-child(11) span:nth-child(1)");
+    return await clickElement(this.page, ".buying-scheme__chair_taken");
 }); 
          
-When('user returns', function () {
-    return this.page.goBack();
-});
+//When('user returns', function () {
+//    return this.page.goBack();
+//});
 
-Then('link is not clicable', function () {
-    return clickElement(this.page, "div:nth-child(11) span:nth-child(1)");
+Then('link is not clicable', async function () {
+    const actual = await this.page.$eval(".acceptin-button", (link) => link.getAttribute("disabled"));
+    
+    expect(actual).equal("true");
 });         

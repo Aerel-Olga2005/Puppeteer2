@@ -19,7 +19,7 @@ Feature: Tickets
     When user click by acception
     Then user sees places "7/6, 7/7, 7/8"
     Then user sees hall "зал 5"
-    Then user sees date "14-10-2026"
+    Then user sees date "15-10-2026"
     Then user sees seccion "20:00"
     Then user sees cost "750"
 
@@ -31,12 +31,5 @@ Feature: Tickets
     When user chose hall
     When user click by place
     When user click by acception
-    When user click by acception
-    When user returns
-    When user chose date
-    When user chose seanse
-    When user chose hall
-    When user click by place
     Then link is not clicable
-    
-    
+  
